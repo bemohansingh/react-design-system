@@ -1,0 +1,16 @@
+    .DesignAppButton {
+        width: 100px;
+        padding: 11px 21px 11px 21px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px;
+        transition: 0.2s ease-in-out;
+      }
+      .DesignAppButton:hover {
+        cursor: pointer;
+      }
