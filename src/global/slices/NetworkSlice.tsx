@@ -1,11 +1,11 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {createSlice } from "@reduxjs/toolkit";
 export enum NetworkConnectionStatus {
     connecting,
     connected,
     notConnected,
   }
   
-export const HomeSlice = createSlice({
+export const ConnectivitySlice = createSlice({
   name: "Connectivity",
   initialState: {
     status: NetworkConnectionStatus.connecting,
@@ -15,5 +15,5 @@ export const HomeSlice = createSlice({
   },
 });
 
-export default HomeSlice.reducer;
+export default ConnectivitySlice.reducer;
 

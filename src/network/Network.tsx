@@ -1,10 +1,10 @@
 import { NetworkConfig } from "./NetworkConfig";
-import NetworkService from "./NetworkService";
-import DefaultNetworkService from "./DefaultNetworkService";
+import {DefaultNetworkService} from "./DefaultNetworkService";
 import { NetworkRoute } from "./NetworkRoute";
 import { NetworkResponse } from "./NetworkResponse";
+import { NetworkService } from "./NetworkService";
 
-export default class Network implements NetworkService {
+export class Network implements NetworkService {
   config: NetworkConfig;
   private service: NetworkService;
   private static instance: Network;
@@ -35,7 +35,19 @@ export default class Network implements NetworkService {
     return instance;
   }
 
-  get<T>(networkRoute: NetworkRoute): Promise<NetworkResponse> {
+  get<T>(networkRoute: NetworkRoute): Promise<NetworkResponse<T>> {
     return this.service.get<T>(networkRoute);
+  }
+  put<T>(networkRoute: NetworkRoute): Promise<NetworkResponse<T>> {
+    return this.service.put<T>(networkRoute);
+  }
+  post<T>(networkRoute: NetworkRoute): Promise<NetworkResponse<T>> {
+    return this.service.post<T>(networkRoute);
+  }
+  delete<T>(networkRoute: NetworkRoute): Promise<NetworkResponse<T>> {
+    return this.service.delete<T>(networkRoute);
+  }
+  patch<T>(networkRoute: NetworkRoute): Promise<NetworkResponse<T>> {
+    return this.service.patch<T>(networkRoute);
   }
 }

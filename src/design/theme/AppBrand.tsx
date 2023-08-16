@@ -1,18 +1,18 @@
-import { BrandColor, ColorTokens, InterActionColor, MessagingColor, defaultNeutralColor } from "./ColorTokens";
+import { DesignBrandColor, ColorTokens, InterActionColor, MessagingColor, defaultDesignNeutralColor } from "./ColorTokens";
 
-export interface AppBrand {
-  getTokens(isDaark: boolean): ColorTokens
+export interface DesignAppBrand {
+  getTokens(isDark: boolean): ColorTokens
 }
 
-export const defaultBrand: AppBrand = {
-  getTokens: function (isDaark: boolean): ColorTokens {
-      return defaultColorTokens
+export const defaultBrand: DesignAppBrand = {
+  getTokens: function (isDark: boolean): ColorTokens {
+      return isDark ? defaultColorTokens : defaultColorTokens
   }
 }
 
 
 
-export const defaultBrandColor: BrandColor = {
+export const defaultBrandColor: DesignBrandColor = {
   main: "#0075BB",
   secondary: "#0075BB",
   dark: "#0075BB",
@@ -40,5 +40,5 @@ export const defaultColorTokens: ColorTokens = {
   brand: defaultBrandColor,
   interaction: defaultInterActionColor,
   messaging: defaultInterMessagingColor,
-  neutral: defaultNeutralColor
+  neutral: defaultDesignNeutralColor
 }

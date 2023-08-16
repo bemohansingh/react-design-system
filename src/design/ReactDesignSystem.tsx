@@ -1,48 +1,55 @@
-import React, { Children } from "react";
-import ThemeContext, { AppTheme, defaultTheme } from "./theme/AppTheme";
-import { AppBrand, defaultInterMessagingColor } from "./theme/AppBrand";
+import ThemeContext, { AppTheme } from "./theme/AppTheme";
+import { DesignAppBrand, defaultInterMessagingColor } from "./theme/AppBrand";
 import {
-  BrandColor,
+  DesignBrandColor,
   ColorTokens,
   InterActionColor,
   MessagingColor,
-  NeutralColor,
-  defaultNeutralColor,
+  DesignNeutralColor,
+  defaultDesignNeutralColor,
 } from "./theme/ColorTokens";
 import { Provider } from "react-redux";
-import {globalStore } from "../global/GlobalStore";
+import { globalStore } from "../global/GlobalStore";
 import { BaseModule } from "../modules/BaseModule";
-import { BaseRoute } from "../../app/BaseRoute";
+import React from "react";
 
-const getColorTokens = function (
-  brandColor: BrandColor,
+export function getColorTokens(
+  props:{
+    brandColor: DesignBrandColor,
   interaction: InterActionColor,
-  messaging: MessagingColor = defaultInterMessagingColor,
-  neutral: NeutralColor = defaultNeutralColor
+  messaging: MessagingColor,
+  neutral: DesignNeutralColor
+  }
 ): ColorTokens {
   const tokens: ColorTokens = {
-    brand: brandColor,
-    interaction: interaction,
-    messaging: messaging,
-    neutral: neutral,
+    brand: props.brandColor,
+    interaction: props.interaction,
+    messaging: props.messaging,
+    neutral: props.neutral,
   };
   return tokens;
-};
+}
 
-export function ReactDesignSystem(props: { brand: AppBrand; children: any; modules: BaseModule[] }) {
-  const bColors = props.brand.getTokens(true);
+export function ReactDesignSystem(props: {
+  brand: DesignAppBrand;
+  children: any;
+  modules: BaseModule[];
+}) {
+  const bColors = props.brand.getTokens(false);
   const tokens = getColorTokens(
-    bColors.brand,
-    bColors.interaction,
-    bColors.messaging,
-    bColors.neutral
+    {
+      brandColor: bColors.brand,
+      interaction: bColors.interaction,
+      messaging: bColors.messaging,
+      neutral: bColors.neutral
+    }
   );
   const theme: AppTheme = {
     colors: tokens,
   };
   return (
     <Provider store={globalStore(props.modules)}>
-      <ThemeContext.Provider value={defaultTheme}>
+      <ThemeContext.Provider value={theme}>
         {props.children}
       </ThemeContext.Provider>
     </Provider>

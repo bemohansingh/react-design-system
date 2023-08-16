@@ -5,13 +5,13 @@ type HEX = `#${string}`;
 export type Color = RGB | RGBA | HEX;
 
 export interface ColorTokens {
-    brand: BrandColor,
+    brand: DesignBrandColor,
     interaction: InterActionColor,
     messaging: MessagingColor,
-    neutral: NeutralColor,
+    neutral: DesignNeutralColor,
   }
  
-  export interface BrandColor {
+  export interface DesignBrandColor {
     main: Color;
         secondary: Color;
         dark: Color;
@@ -32,7 +32,7 @@ export interface ColorTokens {
     information: Color
     informationLight: Color
 }
-  export interface NeutralColor {
+  export interface DesignNeutralColor {
         black: Color
         gray60: Color
         gray50: Color
@@ -42,7 +42,7 @@ export interface ColorTokens {
         gray05: Color
         white: Color
   }
-  export const defaultNeutralColor: NeutralColor = {
+  export const defaultDesignNeutralColor: DesignNeutralColor = {
     black: "#000000",
     gray60: "#687580",
     gray50: "#677374",

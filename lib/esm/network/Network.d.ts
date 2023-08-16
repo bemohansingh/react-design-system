@@ -1,9 +1,15 @@
 import { NetworkConfig } from "./NetworkConfig";
-import { NetworkResponse } from "./NetworkResponse";
 import { NetworkRoute } from "./NetworkRoute";
-
-export interface NetworkService {
-    config: NetworkConfig
+import { NetworkResponse } from "./NetworkResponse";
+import { NetworkService } from "./NetworkService";
+export declare class Network implements NetworkService {
+    config: NetworkConfig;
+    private service;
+    private static instance;
+    private constructor();
+    static getInstance(): Network;
+    static fromConfig(config: NetworkConfig): Network;
+    static fromService(service: NetworkService): Network;
     get<T>(networkRoute: NetworkRoute): Promise<NetworkResponse<T>>;
     put<T>(networkRoute: NetworkRoute): Promise<NetworkResponse<T>>;
     post<T>(networkRoute: NetworkRoute): Promise<NetworkResponse<T>>;

@@ -1,6 +1,6 @@
-import React from 'react'; 
 import { ColorTokens } from './ColorTokens';
 import { defaultColorTokens } from './AppBrand';
+import * as React from 'react';
 
 
 export interface AppTheme {
@@ -11,6 +11,5 @@ export interface AppTheme {
     colors: defaultColorTokens
   };
 
-const AppThemeContext = React.createContext<AppTheme>(defaultTheme);  // Create our context       
-export default AppThemeContext;
-
+ export const AppThemeContext: React.Context<AppTheme>  = React.createContext<AppTheme>(defaultTheme);  // Create our context
+export default AppThemeContext
