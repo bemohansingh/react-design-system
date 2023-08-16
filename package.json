@@ -11,7 +11,7 @@
     "url": "https://github.com/bemohansingh/react-design-system.git"
   },
   "files": [
-    "dist/"
+    "src/"
   ],
   "author": "Mohan Singh Thagunna",
   "license": "ISC",
