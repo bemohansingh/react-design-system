@@ -18,5 +18,5 @@
       "allowSyntheticDefaultImports": true
     },
     "include": ["src/**/*.ts*", "index.tsx"],
-    "exclude": ["node_modules", "lib"]
+    "exclude": ["lib"]
   }
